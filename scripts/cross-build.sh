@@ -134,7 +134,7 @@ build() {
     echo "=== Installing toolchain ${ALIAS} (${TARGET})..."
 
     mkdir -p "${CROSS_ROOT}" && export PATH="${PATH}:/opt/cross/bin"
-    curl -vfSsLo- "https://musl.cc/${TARGET}-cross.tgz" | tar xz -C "${CROSS_ROOT}" --strip-components 1
+    wget -P ${CROSS_ROOT} "https://musl.cc/${TARGET}-cross.tgz" && cd ${CROSS_ROOT} && tar xz "${TARGET}-cross.tgz" --strip-components 1
 
     echo "=== Building target ${ALIAS} (${TARGET})..."
 
